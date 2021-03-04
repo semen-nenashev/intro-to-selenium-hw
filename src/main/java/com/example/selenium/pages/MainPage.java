@@ -1,22 +1,26 @@
 package com.example.selenium.pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends com.example.selenium.pages.BasePage {
-
-    // TODO define title and logout WebElements using @FindBy
+    @FindBy(linkText = "Logout")
+    WebElement LogoutButton;
+    @FindBy(css = "h2")
+    WebElement Title;
 
     public MainPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getTitle() {
-        // TODO return title text
-        return null;
+    public MainPage getTitle() {
+        Title.getText();
+        return this;
     }
 
     public MainPage clickLogout() {
-        // TODO click logout and return MainPage
+        LogoutButton.click();
         return this;
     }
 }

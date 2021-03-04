@@ -1,6 +1,9 @@
 package com.example.selenium.steps;
 
+import com.example.selenium.pages.LoginPage;
+import com.example.selenium.pages.MainPage;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class UserSteps {
     private WebDriver driver;
@@ -10,14 +13,16 @@ public class UserSteps {
     }
 
     public com.example.selenium.steps.UserSteps login(String username, String password) {
-        // TODO initialize LoginPage, call setUsername, setPassword, and click login methods
-
-        //  TODO assert title
+        LoginPage login = new LoginPage(driver);
+        MainPage equalText = new MainPage(driver);
+        login.setUsername(username).setPassword(password).clickLogin();
+        Assert.assertEquals(equalText.getTitle(), "Secure Area", "Login Failed!");
         return this;
     }
 
     public UserSteps logout() {
-        // TODO call logout method
+        MainPage logout = new MainPage(driver);
+        logout.clickLogout();
         return this;
     }
 }
