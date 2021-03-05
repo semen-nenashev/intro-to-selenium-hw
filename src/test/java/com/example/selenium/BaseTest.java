@@ -11,15 +11,12 @@ import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
     protected WebDriver driver;
-    protected UserSteps userSteps;
-    JavascriptExecutor js;
 
     @BeforeClass
     public void setUp() {
         driver = new ChromeDriver();
-        js = (JavascriptExecutor) driver;
         driver.get("https://the-internet.herokuapp.com/login");
-        driver.manage().window().setSize(new Dimension(1680, 1027));
+//        driver.manage().window().setSize(new Dimension(1680, 1027));
     }
 
     @AfterClass
